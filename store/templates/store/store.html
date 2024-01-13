@@ -17,4 +17,10 @@
             </div>
         {% endfor %}
     </div>
+    <script>
+    var total = '{{order.get_order_total|floatformat:2}}'
+    var totalq = '{{order.get_order_quantity|floatformat:2}}'
+    console.log("Order total",total);
+    console.log("Order quantity",totalq);
+    </script>
 {% endblock content %}

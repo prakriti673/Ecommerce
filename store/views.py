@@ -171,7 +171,7 @@ def processOrder(request):
 	total = float(data['form']['total'])
 	order.transaction_id = transaction_id
 
-	if total == float(order.get_cart_total):
+	if total == float(order.get_order_total):
 		order.complete = True
 	order.save()
 
@@ -183,6 +183,6 @@ def processOrder(request):
 		city=data['shipping']['city'],
 		state=data['shipping']['state'],
 		zipcode=data['shipping']['zipcode'],
-		)
+	)
 
 	return JsonResponse('Payment completed', safe=False)

@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="box-element" id="form-wrapper">
             <form id="form">
-                <!-- {% csrf_token %} -->
+                {% csrf_token %}
                 <div id="user-info">
                     <div class="form-field">
                         <input required class="form-control" type="text" name="name" placeholder="Name..">
@@ -68,7 +68,7 @@
             </div>
             {% endfor %}
             <h5>Items: <strong> {{order.get_order_quantity}} </strong></h5>
-            <h5>Total: $<strong> {{order.get_order_total|floatformat:2}} </strong></h5>
+            <h5>Total: $ {{order.get_order_total|floatformat:2}} </h5>
         </div>
     </div>
 </div>
@@ -118,7 +118,9 @@
 
     var shipping = '{{order.shipping}}'
     var total = '{{order.get_order_total|floatformat:2}}'
-
+    var totalq = '{{order.get_order_quantity|floatformat:2}}'
+    console.log("Order total",total)
+    console.log("Order quantity",totalq)
     if (shipping == 'False') {
         document.getElementById('shipping-info').innerHTML = ''
     }

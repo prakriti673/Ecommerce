@@ -33,15 +33,19 @@ function updateUserOrder(productId, action){
 		.then((response)=>{
 		   return response.json();
 		})
-		.then((data) => {
+		.then((data)=>{
 			console.log("Data:",data)
-		    // location.reload()
+		    document.location.reload()
 		});
 }
 
 
 function addCookieItem(productId, action){
 	console.log('User is not authenticated')
+	// var total = '{{order.get_order_total|floatformat:2}}'
+    // var totalq = '{{order.get_order_quantity|floatformat:2}}'
+    // console.log("Order total",total);
+    // console.log("Order quantity",totalq);
 
 	if (action == 'add'){
 		if (cart[productId] == undefined){
@@ -63,7 +67,9 @@ function addCookieItem(productId, action){
     //after cart is modified, setting the cookie data for cart
     //(cart) will now store new cart
 	console.log('CART:', cart)
+	/*For checking the order quantity */
+       
 	document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
 	console.log(document.cookie);
-	// document.location.reload()
+	document.location.reload()
 }
