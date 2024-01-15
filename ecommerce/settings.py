@@ -96,6 +96,7 @@ DATABASES = {
 
 ''' ---------- For postgres database connection ---------'''
 '''
+# Replace data fields with your own values
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
