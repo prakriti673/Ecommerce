@@ -9,8 +9,16 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+#-------------For creating gitignore use this------------
+#https://www.makeuseof.com/django-secret-key-generate-new/
+
 import os
 from pathlib import Path
+
+# added by prakriti
+from dotenv import load_dotenv
+# load the environment variables from .env to settings.py file by load_dotenv()
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a#^f#cfr9j4ciu23c&gp_&=6p@e+877%*+58+(n-j4)@ao)s)9'
+# SECRET_KEY = 'django-insecure-a#^f#cfr9j4ciu23c&gp_&=6p@e+877%*+58+(n-j4)@ao)s)9'
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -75,7 +84,7 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-'''DEFAULT DATABASE CONNECTION SETUP
+# DEFAULT DATABASE CONNECTION SETUP
 
 DATABASES = {
     'default': {
@@ -84,18 +93,20 @@ DATABASES = {
     }
 
 }
-'''
+
 ''' ---------- For postgres database connection ---------'''
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newdb',
-        'USER': 'prakriti',
-        'PASSWORD': 'prakriti',
+        'NAME': 'database_name',
+        'USER': 'database_user',
+        'PASSWORD': 'database_password',
         'HOST': '127.0.0.1',
         'PORT': '5432'
     }
 }
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -142,6 +153,8 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
+#added by prakriti
 MEDIA_URL='/images/'
 MEDIA_ROOT= os.path.join(BASE_DIR, 'static/images')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

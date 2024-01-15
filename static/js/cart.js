@@ -7,11 +7,13 @@ for (i = 0; i < updateBtns.length; i++) {
 		console.log('productId:', productId, 'Action:', action)
 		console.log("USER:", user)
 
-        //if user is a guest user then the cart item will be added as a cookie data in the browser.
-
+    	// if user is a guest user then the cart item will be added as a cookie data in the browser.
+		
 		if(user == "AnonymousUser"){
 			addCookieItem(productId, action)
-		}else{
+		}
+		else{
+			//item is updated in the cart
 			updateUserOrder(productId, action)
 		}
 	})
@@ -35,6 +37,9 @@ function updateUserOrder(productId, action){
 		})
 		.then((data)=>{
 			console.log("Data:",data)
+			// modified by prakriti
+			// earlier was this
+			// location.reload()
 		    document.location.reload()
 		});
 }
@@ -42,12 +47,14 @@ function updateUserOrder(productId, action){
 
 function addCookieItem(productId, action){
 	console.log('User is not authenticated')
+
 	// var total = '{{order.get_order_total|floatformat:2}}'
     // var totalq = '{{order.get_order_quantity|floatformat:2}}'
     // console.log("Order total",total);
     // console.log("Order quantity",totalq);
 
 	if (action == 'add'){
+		// if item is added for the first time
 		if (cart[productId] == undefined){
 		cart[productId] = {'quantity':1}
 

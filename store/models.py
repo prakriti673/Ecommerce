@@ -36,6 +36,7 @@ class Order(models.Model):
     def __str__(self):
         return str(self.id) 
     
+    # get total cart value
     @property
     def get_order_total(self):
         order_total=0
@@ -43,6 +44,7 @@ class Order(models.Model):
             order_total+=o.get_total
         return order_total
     
+    # get total number of items in cart
     @property
     def get_order_quantity(self):
         order_quantity=0
@@ -50,6 +52,7 @@ class Order(models.Model):
             order_quantity+=o.quantity
         return order_quantity
     
+    # product may be digital(no shipping req.) or physical(shipping req.)
     @property
     def shipping(self):
         shipping=False
@@ -67,6 +70,7 @@ class OrderItem(models.Model):
     quantity=models.IntegerField(default=0,blank=True,null=True)
     date_added=models.DateTimeField(auto_now_add=True)
 
+    # get total for a particular product
     @property
     def get_total(self):
         total=self.product.price*self.quantity

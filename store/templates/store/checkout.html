@@ -125,11 +125,11 @@
         document.getElementById('shipping-info').innerHTML = ''
     }
 
-    if (user != 'AnonymousUser') {
+    if (user != 'AnonymousUser') {cd 
         document.getElementById("user-info").innerHTML = ''
     }
 
-    if (shipping == 'False' && user != 'AnonymousUser') {
+    if (shipping == 'False' && user == 'AnonymousUser') {
 
         /* if user purchases digital media and is not registered, just display payment options and checkout */
 

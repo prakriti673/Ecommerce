@@ -15,7 +15,6 @@ def cookieCart(request):
     
     for i in cart:
         try:
-            # if(cart[i]['quantity']>0):
             cartItems += cart[i]['quantity']
 
             product = Product.objects.get(id=i)
@@ -83,6 +82,7 @@ def guestOrder(request,data):
         orderItem = OrderItem.objects.create(
             product = product,
             order = order,
+            # manage for negative cart qty.
             quantity = (item['quantity'] if item['quantity']>0 else -1*item['quantity']),
         )
     
